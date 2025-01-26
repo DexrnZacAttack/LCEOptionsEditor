@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <Title>LCE Options Editor</Title>
+    <Authors>DexrnZacAttack</Authors>
+    <PackageProjectUrl>https://github.com/DexrnZacAttack/LCEOptionsEditor</PackageProjectUrl>
+    <Company>DexrnZacAttack</Company>
+    <Product>LCE Options Editor</Product>
+    <AssemblyVersion>1.0.0</AssemblyVersion>
+    <FileVersion>1.0.0</FileVersion>
+    <NeutralLanguage>en-US</NeutralLanguage>
+  </PropertyGroup>
+
+</Project>

@@ -1,0 +1,51 @@
+﻿<Window x:Class="LCEOptionsEditor.OptionsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LCEOptionsEditor"
+        mc:Ignorable="d"
+        Height="450" Width="800">
+    <Grid Name="MainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TabControl>
+            <TabItem Header="Game Options">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                    <StackPanel Name="GameOptions"></StackPanel>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="Audio">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                    <StackPanel Name="Audio"></StackPanel>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="Graphics">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                    <StackPanel Name="Graphics"></StackPanel>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="User Interface">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                    <StackPanel Name="UserInterface"></StackPanel>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="Controls">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                    <StackPanel Name="Controls"></StackPanel>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="Other">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                    <StackPanel Name="Other"></StackPanel>
+                </ScrollViewer>
+            </TabItem>
+        </TabControl>
+        <StackPanel Grid.Row="1" Name="Buttons" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Name="SaveButton" Margin="5" Content="Save" Width="150" HorizontalAlignment="Center"/>
+            <Button Name="RefreshButton" Margin="5" Content="Refresh" Width="150" HorizontalAlignment="Center"/>
+        </StackPanel>
+    </Grid>
+</Window>
