@@ -33,8 +33,41 @@
                 </ScrollViewer>
             </TabItem>
             <TabItem Header="Controls">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" Margin="10,5,10,5" VerticalScrollBarVisibility="Auto">
+                    <StackPanel Name="Controls">
+                        <!-- Todo: CLEAN UP PLEASE -->
+                        <Button Content="Reset to Defaults" Click="ButtonBase_OnClick"></Button> 
+                        <TextBlock Text="Movement" FontSize="20" Margin="0,5,0,5"></TextBlock>
+                        <Border BorderBrush="Black" BorderThickness="0,0,0,1" Margin="0,5,0,5" />
+                        <StackPanel Name="MovementOptions" HorizontalAlignment="Left"></StackPanel>
+                        <TextBlock Text="Standard" FontSize="20" Margin="0,5,0,5"></TextBlock>
+                        <Border BorderBrush="Black" BorderThickness="0,0,0,1" Margin="0,5,0,5" />
+                        <StackPanel Name="StandardControls" HorizontalAlignment="Left"></StackPanel>
+                        <TextBlock Text="Creative" FontSize="20" Margin="0,5,0,5"></TextBlock>
+                        <Border BorderBrush="Black" BorderThickness="0,0,0,1" Margin="0,5,0,5" />
+                        <StackPanel Name="CreativeControls" HorizontalAlignment="Left"></StackPanel>
+                        <TextBlock Text="Mini Game Lobby" FontSize="20" Margin="0,5,0,5"></TextBlock>
+                        <Border BorderBrush="Black" BorderThickness="0,0,0,1" Margin="0,5,0,5" />
+                        <StackPanel Name="MiniGameLobbyControls" HorizontalAlignment="Left"></StackPanel>
+                        <TextBlock Text="Spectating" FontSize="20" Margin="0,5,0,5"></TextBlock>
+                        <Border BorderBrush="Black" BorderThickness="0,0,0,1" Margin="0,5,0,5" />
+                        <StackPanel Name="SpectatingControls" HorizontalAlignment="Left"></StackPanel>
+                        <TextBlock Text="Glide Mini Game" FontSize="20" Margin="0,5,0,5"></TextBlock>
+                        <Border BorderBrush="Black" BorderThickness="0,0,0,1" Margin="0,5,0,5" />
+                        <StackPanel Name="GlideControls" HorizontalAlignment="Left"></StackPanel>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="Skins">
                 <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-                    <StackPanel Name="Controls"></StackPanel>
+                    <StackPanel Name="Skins">
+                        <TextBlock Text="Selected" FontSize="20" Margin="10,5,10,5"></TextBlock>
+                        <Border BorderBrush="Black" BorderThickness="0,0,0,1" Margin="10,5,10,5" />
+                        <StackPanel Name="SelectedSkins" Margin="10,5,10,5"></StackPanel>
+                        <TextBlock Text="Favorites" FontSize="20" Margin="10,5,10,5"></TextBlock>
+                        <Border BorderBrush="Black" BorderThickness="0,0,0,1" Margin="10,5,10,5" />
+                        <StackPanel Name="FavoriteSkins" Margin="10,5,10,5"></StackPanel>
+                    </StackPanel>
                 </ScrollViewer>
             </TabItem>
             <TabItem Header="Other">

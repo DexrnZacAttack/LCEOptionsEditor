@@ -58,12 +58,16 @@ public class Options
     public readonly List<Option> Settings;
     private readonly byte[] _optionsFile;
     private readonly string _path;
+    public SkinOptions SkinOptions;
+    public BindOptions BindOptions;
 
     public Options(string path, int offset = 0)
     {
         this._offset = offset;
         this._path = path;
         _optionsFile = File.ReadAllBytes(path);
+        this.SkinOptions = new SkinOptions(_optionsFile);
+        this.BindOptions = new BindOptions(_optionsFile, offset);
         
         this.Settings = new List<Option>();
         // Settings are from the docs that I wrote at https://team-lodestone.github.io/Documentation/LCE/Game/Options.html

@@ -32,19 +32,89 @@ namespace LCEOptionsEditor
                 case Option.OptionCategory.UserInterface:
                     return UserInterface;
                 case Option.OptionCategory.Controls:
-                    return Controls;
+                    return MovementOptions; // nothing else goes in controls anyways
                 default:
                     return Other;
             }
         }
         
+        public StackPanel GetBindingCategoryPanel(BindOption.BindCategory category)
+        {
+            switch (category)
+            {
+                case BindOption.BindCategory.Standard:
+                    return StandardControls;
+                case BindOption.BindCategory.Creative:
+                    return CreativeControls;
+                case BindOption.BindCategory.MiniGameLobby:
+                    return MiniGameLobbyControls;
+                case BindOption.BindCategory.Spectating:
+                    return SpectatingControls;
+                case BindOption.BindCategory.GlideMiniGame:
+                    return GlideControls; 
+                default:
+                    return StandardControls;
+            }
+        }
+
+        public void LoadSkinOptions()
+        {
+            FavoriteSkins.Children.Clear();
+            SelectedSkins.Children.Clear();
+
+            for (byte i = 0; i < 10; i++)
+            {
+                uint favorite = options.SkinOptions.getFavoriteSkin(i);
+                TextBlock textBlock = new TextBlock();
+                textBlock.Text = $"Slot {i + 1} ID: {(favorite != 0xFFFFFFFF ? favorite.ToString() : "None")}";
+                FavoriteSkins.Children.Add(textBlock);
+            }
+            
+            TextBlock selectedSkin = new TextBlock();
+            selectedSkin.Text = $"Selected Skin: {options.SkinOptions.getSelectedSkin()}";
+            SelectedSkins.Children.Add(selectedSkin);
+            
+            TextBlock selectedCape = new TextBlock();
+            selectedCape.Text = $"Selected Cape: {options.SkinOptions.getSelectedCape()}";
+            SelectedSkins.Children.Add(selectedCape);
+        }
+        
+        public void LoadControlBindings()
+        {
+            StandardControls.Children.Clear();
+            CreativeControls.Children.Clear();
+            MiniGameLobbyControls.Children.Clear();
+            SpectatingControls.Children.Clear();
+            GlideControls.Children.Clear();
+
+            foreach (BindOption bOption in options.BindOptions.Bindings)
+            {
+                Grid controlPanel = new Grid();
+                controlPanel.Width = 400;
+                controlPanel.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+                controlPanel.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(0, GridUnitType.Auto) });
+
+                TextBlock bind = new TextBlock();
+                bind.FontSize = 16;
+                bind.Text = $"{bOption.Name}";
+                Grid.SetColumn(bind, 0);
+                
+                ControlBox box = new ControlBox(options.BindOptions, bOption);
+                Grid.SetColumn(box, 1);
+                
+                controlPanel.Children.Add(bind);
+                controlPanel.Children.Add(box);
+                GetBindingCategoryPanel(bOption.Category).Children.Add(controlPanel);
+            }
+        }
+
         public void LoadOptions()
         {
             GameOptions.Children.Clear();
             Audio.Children.Clear();
             Graphics.Children.Clear();
             UserInterface.Children.Clear();
-            Controls.Children.Clear();
+            MovementOptions.Children.Clear();
             Other.Children.Clear();
 
             foreach (var option in options.Settings)
@@ -104,6 +174,9 @@ namespace LCEOptionsEditor
                 }
                 
             }
+
+            LoadSkinOptions();
+            LoadControlBindings();
         }
 
         public OptionsWindow(string path, int offset = 0)
@@ -124,6 +197,17 @@ namespace LCEOptionsEditor
                 options = new Options(path);
                 LoadOptions();
             };
+        }
+
+        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        {
+            foreach (var option in options.BindOptions.Bindings)
+            {
+                options.BindOptions.Reset(option);
+            }
+
+            options.Save();
+            LoadOptions();
         }
     }
 }
